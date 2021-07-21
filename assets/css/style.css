@@ -22,15 +22,18 @@ textarea{
 }
 
 .description{
+  flex: 3 70%;
   white-space: pre-wrap;
 }
 
 .time-block{
+  flex: 1 10%;
   text-align: center;
   border-radius: 15px;
 }
 
 .row {
+  display: flex;
   white-space: pre-wrap;
   height: 80px;
   border-top: 1px solid white;;
@@ -40,6 +43,8 @@ textarea{
   background-color: #ffffff;
   color: #000000;
   border-top: 1px dashed #000000;
+  text-align: right;
+  padding-right: 15px;
 }
 
 .past {
@@ -58,6 +63,7 @@ textarea{
 }
 
 .saveBtn {
+  flex: 1 10%;
   border-left: 1px solid black;
   border-top-right-radius: 15px;
   border-bottom-right-radius: 15px;
