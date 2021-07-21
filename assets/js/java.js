@@ -1,9 +1,7 @@
 var currentDateContainer = document.querySelector('#currentDay');
 var contentContainer = document.querySelector('.container');
-var currentTime = moment().format('MMMM Do YYYY, h:mm:ss a');
-var currentHour = moment('10 AM', 'hh A').format('hh');
-if(currentHour<10){currentHour = currentHour.replace("0")}
-var typography = moment('10 AM', 'hh A').format('A');
+var currentTime = moment().format('MMMM Do YYYY, H:mm:ss a');
+var currentHour = moment("12PM","HA").format('H');
 
 //creations
 currentDateContainer.innerHTML = currentTime;
@@ -20,31 +18,16 @@ function generatePlanner() {
         else if ((9+i) % 12==0){h2Hour.innerText = "12PM";}
         else {h2Hour.innerText = ((9+i) % 12)+"PM"}
         var divDescription = document.createElement('div');
-        debugger;
-        console.log(currentHour+typography+ " |||| "+h2Hour.innerText+" ||||"+currentHour +" |||"+((9+i) % 12))
-        console.log(i+" "+h2Hour.innerText.indexOf(currentHour+typography)+" |||")
-        
-        // switch (typography){
-        //     case "AM":
-        //         if (h2Hour.innerText.indexOf(currentHour+typography) == 0) 
-        //         {divDescription.className = 'description present';}
-        //         else if(currentHour >((9+i) % 12))
-        //         {divDescription.className = 'description past';}
-        //         else if(currentHour <((9+i) % 12))
-        //         {divDescription.className = 'description future';}
-        //         break;
-        //     case "PM":
-        //         if (h2Hour.innerText.indexOf(currentHour+typography) == 0) 
-        //         {divDescription.className = 'description present';}
-        //         else if(currentHour >((9+i) % 12) || currentHour ==12)
-        //         {divDescription.className = 'description past';}
-        //         else if(currentHour <((9+i) % 12))
-        //         {divDescription.className = 'description future';}
-        //         break;
-        // }
+debugger;
+        console.log(moment(h2Hour.innerText,'ha'))
+        console.log(typeof(moment(h2Hour.innerText,'ha').format('H')) +"   ||  "+typeof(currentHour))
+        if(moment(h2Hour.innerText,'ha').format('H') == currentHour)
+        {divDescription.className = 'description present';}
+        else if(moment(h2Hour.innerText,'ha').format('H') < currentHour)
+        {divDescription.className = 'description past';}
+        else if(moment(h2Hour.innerText,'ha').format('H') > currentHour)
+        {divDescription.className = 'description future';}
 
-
-        // divDescription.className = 'description';
         var textArea = document.createElement('textarea');
         var btnSave = document.createElement('dutton');
         btnSave.className = 'saveBtn';
