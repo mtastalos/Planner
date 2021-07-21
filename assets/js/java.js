@@ -2,6 +2,7 @@ var currentDateContainer = document.querySelector('#currentDay');
 var contentContainer = document.querySelector('.container');
 var currentTime = moment().format('MMMM Do YYYY, H:mm:ss a');
 var currentHour = moment().format('H');
+var storage = [];
 
 //creations
 currentDateContainer.innerHTML = currentTime;
@@ -45,12 +46,29 @@ function generatePlanner() {
     }
 }
 
+function searchLS(btnPressed,array) {
+
+}
 $('.container').on('click', '.saveBtn' , function() {
-    var selectedBtn = $(this).attr('data-btn');
-    var userInput = $('textarea[data-row="'+selectedBtn+'"]');
-    // alert(typeof(selectedBtn))
-    console.log('data-row="'+selectedBtn+'"')
-    console.log(userInput)
+    var saveBtnPress = $(this).attr('data-btn');
+    var textAreaInput = $('[data-row="'+saveBtnPress+'"]').val();
+
+    planLS = JSON.parse(localStorage.getItem('plan'));
+    // localStorage.setItem("plan",JSON.stringify(storage));
+    planLS.forEach(function(item) {
+        // console.log(item.selectedBtn + ' || '+saveBtnPress)
+        // console.log(parseInt(item.selectedBtn) == parseInt(saveBtnPress))
+        if (parseInt(item.selectedBtn) == parseInt(saveBtnPress)){
+            console.log(item.userInput)
+            item.userInput = textAreaInput
+            localStorage.setItem('plan', JSON.stringify(planLS));
+            console.log(item.userInput)
+        } 
+    });
+    
+
+
+
 
 });
 
