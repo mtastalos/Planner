@@ -1,7 +1,7 @@
 var currentDateContainer = document.querySelector('#currentDay');
 var contentContainer = document.querySelector('.container');
 var currentTime = moment().format('MMMM Do YYYY, H:mm:ss a');
-var currentHour = moment("12PM","HA").format('H');
+var currentHour = moment().format('H');
 
 //creations
 currentDateContainer.innerHTML = currentTime;
@@ -18,14 +18,12 @@ function generatePlanner() {
         else if ((9+i) % 12==0){h2Hour.innerText = "12PM";}
         else {h2Hour.innerText = ((9+i) % 12)+"PM"}
         var divDescription = document.createElement('div');
-debugger;
-        console.log(moment(h2Hour.innerText,'ha'))
-        console.log(typeof(moment(h2Hour.innerText,'ha').format('H')) +"   ||  "+typeof(currentHour))
-        if(moment(h2Hour.innerText,'ha').format('H') == currentHour)
+
+        if(parseInt(moment(h2Hour.innerText,'ha').format('H')) == parseInt(currentHour))
         {divDescription.className = 'description present';}
-        else if(moment(h2Hour.innerText,'ha').format('H') < currentHour)
+        else if(parseInt(moment(h2Hour.innerText,'ha').format('H')) < parseInt(currentHour))
         {divDescription.className = 'description past';}
-        else if(moment(h2Hour.innerText,'ha').format('H') > currentHour)
+        else if(parseInt(moment(h2Hour.innerText,'ha').format('H')) > parseInt(currentHour))
         {divDescription.className = 'description future';}
 
         var textArea = document.createElement('textarea');
