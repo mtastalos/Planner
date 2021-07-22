@@ -16,8 +16,7 @@ Practice saving data to localStorage, creating elements, and using 3rd party API
 ## Website
 https://mtastalos.github.io/Planner/
 
- ![](assets/images/website-part-1.JPG)
- ![](assets/images/website-part-2.JPG)
+ ![](assets/images/website.jpg)
 
 
  ## Contribution
