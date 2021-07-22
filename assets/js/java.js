@@ -1,7 +1,7 @@
 var currentDateContainer = document.querySelector('#currentDay');
 var contentContainer = document.querySelector('.container');
 var currentTime = moment().format('dddd, MMMM Do');
-var currentHour = moment().format('H');
+var currentHour = moment('3 pm', 'HH A').format('H');
 var storage = [{"saveBtnPress":"0","textAreaInput":""},{"saveBtnPress":"1","textAreaInput":""},{"saveBtnPress":"2","textAreaInput":""},
 {"saveBtnPress":"3","textAreaInput":""},{"saveBtnPress":"4","textAreaInput":""},{"saveBtnPress":"5","textAreaInput":""},
 {"saveBtnPress":"6","textAreaInput":""},{"saveBtnPress":"7","textAreaInput":""},{"saveBtnPress":"8","textAreaInput":""}];
@@ -34,9 +34,11 @@ function generatePlanner() {
         textArea.dataset.row = i;
         if (storage[i].textAreaInput!=='') {textArea.innerText = storage[i].textAreaInput;}
 
-        var btnSave = document.createElement('dutton');
+        var btnSave = document.createElement('button');
         btnSave.dataset.btn = i;
-        btnSave.className = 'saveBtn';
+        btnSave.className = 'saveBtn ';
+        var btnIcon = document.createElement('i');
+        btnIcon.className = 'far fa-save';
         
         contentContainer.appendChild(sectionRow);
         sectionRow.appendChild(divTime);
@@ -44,6 +46,7 @@ function generatePlanner() {
         sectionRow.appendChild(divDescription);
         divDescription.appendChild(textArea);
         sectionRow.appendChild(btnSave);
+        btnSave.appendChild(btnIcon);
     }
 }
 
