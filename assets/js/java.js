@@ -5,12 +5,15 @@ var currentHour = moment().format('H');
 var storage = [{"saveBtnPress":"0","textAreaInput":""},{"saveBtnPress":"1","textAreaInput":""},{"saveBtnPress":"2","textAreaInput":""},
 {"saveBtnPress":"3","textAreaInput":""},{"saveBtnPress":"4","textAreaInput":""},{"saveBtnPress":"5","textAreaInput":""},
 {"saveBtnPress":"6","textAreaInput":""},{"saveBtnPress":"7","textAreaInput":""},{"saveBtnPress":"8","textAreaInput":""}];
-localStorage.setItem('plan', JSON.stringify(storage));
-currentDateContainer.innerHTML = currentTime;
 
-//creating HTML elements
+//checks to see if localStorage has already been created
+if(localStorage.getItem('plan')===null){localStorage.setItem('plan', JSON.stringify(storage));}
+
+//display current date + creating HTML elements
 function generatePlanner() {
+    currentDateContainer.innerHTML = currentTime;
     var storage = JSON.parse(localStorage.getItem('plan'));
+
     for(i=0;i<9;i++){
         var sectionRow = document.createElement('section');
         sectionRow.className = 'row';
@@ -60,7 +63,7 @@ $('.container').on('click', '.saveBtn' , function() {
     var storage = JSON.parse(localStorage.getItem('plan'));
     storage.forEach(function(item) {
         if (parseInt(item.saveBtnPress) == parseInt(saveBtnPress)){
-            item.textAreaInput = textAreaInput
+            item.textAreaInput = textAreaInput;
             localStorage.setItem('plan', JSON.stringify(storage));
         } 
     });
